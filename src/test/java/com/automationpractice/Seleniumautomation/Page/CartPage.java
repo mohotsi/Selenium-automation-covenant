@@ -3,6 +3,7 @@ package com.automationpractice.Seleniumautomation.Page;
 import com.automationpractice.Seleniumautomation.annotation.Page;
 import com.automationpractice.Seleniumautomation.model.WebTable;
 import com.automationpractice.Seleniumautomation.model.WebTableCell;
+import com.automationpractice.Seleniumautomation.model.WebTableRow;
 import com.google.common.collect.Streams;
 import lombok.val;
 import org.openqa.selenium.By;
@@ -27,9 +28,10 @@ public class CartPage extends CommonPage{
                        tr.stream(),(th,td)->new WebTableCell(th,td) ).collect(Collectors.toList()))
                .collect(Collectors.toList());
 
-/**
- * Streams.zip(summary_info_label.stream().map(WebElement::getText),
- *                 summary_value_label.stream().map(WebElement::getText),(info,value)-> mMap.put(info, value));
- */
+    }
+    public WebTableRow getProductRow(String productName){
+       return getShoppingCartSummary().stream().map(row->new WebTableRow(row))
+                .filter(row->row.getColumnData("Description").findElement(By.tagName("a")).getText().equalsIgnoreCase(productName))
+                .findFirst().orElseThrow(null);
     }
 }

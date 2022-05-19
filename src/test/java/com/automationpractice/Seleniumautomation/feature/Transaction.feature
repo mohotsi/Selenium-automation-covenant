@@ -4,7 +4,10 @@ Feature: Transaction
     When User Add an item(s) to shopping your cart.
     |Item|
     |Printed Summer Dress|
-    Then navigate to cart
+    And navigate to cart
     Then Verify that the Item(s) displayed on cart are the one that were added
+     When Set quantity amount to "3" for product "Printed Summer Dress"; verify displayed total matches calculated total.
+
+
 
 
