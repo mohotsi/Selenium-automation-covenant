@@ -29,5 +29,7 @@ default.timeout=60
 
 # You can also run this automation solution remotely using a maven command
 maven clean test -Dspring-boot.run.profiles=remote
+# selenium grid url can be configured in this file
+application-remote.properties
 
 
