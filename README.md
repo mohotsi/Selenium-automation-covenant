@@ -18,6 +18,8 @@ selenium automation
 # you can change the browser inside application.properties
 
 application.url=http://automationpractice.com/
+
 browser=chrome
+
 default.timeout=60
 
