@@ -1,5 +1,9 @@
 # Selenium-automation
 selenium automation
+These is selenium automation for front end online store
+
+the project is written using page object model, I used springboot frame work, with cucumber Gerkin for test cases layer
+
 # You need java 11, maven, cucumber Gerkin plugin
 
 # you can run this project in this file src/main/resources/testng.xml or command line type -> maven clean test
