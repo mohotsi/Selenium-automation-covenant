@@ -7,7 +7,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 public class WebDriverBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
-        configurableListableBeanFactory.registerScope("WebDriverScope",new WebDriverScope());
+        configurableListableBeanFactory.registerScope("WebDriverScope", new WebDriverScope());
 
     }
 }

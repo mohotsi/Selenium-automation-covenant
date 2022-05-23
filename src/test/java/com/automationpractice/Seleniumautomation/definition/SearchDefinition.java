@@ -25,12 +25,11 @@ public class SearchDefinition {
     }
 
 
-
     @Then(": Verify the first result matches {string}")
     public void verifyTheFirstResultMatches(String searchText) {
-        val firstProductName=homePage.getProducts().getNames().stream().map(WebElement::getText).findFirst().orElse(null);
+        val firstProductName = homePage.getProducts().getNames().stream().map(WebElement::getText).findFirst().orElse(null);
 
-        assertThat("the first item name doesn't match the search criteria",firstProductName,equalToIgnoringCase(searchText));
+        assertThat("the first item name doesn't match the search criteria", firstProductName, equalToIgnoringCase(searchText));
     }
 
 
@@ -42,12 +41,11 @@ public class SearchDefinition {
     @When(": search comma separated text {string}")
     public void searchCommaSeparatedText(String commaSeparatedText) {
         Arrays.stream(commaSeparatedText.split(",")).
-                forEach(search-> {
+                forEach(search -> {
                     userSearchesFor(search);
                     verifyTheFirstResultMatches(search);
-    });
+                });
     }
-
 
 
 }

@@ -1,7 +1,6 @@
 package com.automationpractice.Seleniumautomation.Webdriver;
 
 
-
 import com.automationpractice.Seleniumautomation.annotation.BrowserDriver;
 import com.automationpractice.Seleniumautomation.annotation.ThreadBrowsing;
 import org.openqa.selenium.WebDriver;
@@ -21,27 +20,27 @@ public class RemoteWebDriverBean extends ProfileCommonShare {
     @Value("${selenium.grid.url}")
     private URL url;
 
-    @ConditionalOnProperty(name = "browser",havingValue = "firefox")
+    @ConditionalOnProperty(name = "browser", havingValue = "firefox")
     @ThreadBrowsing
-    public WebDriver fireDriver(){
+    public WebDriver fireDriver() {
         return new RemoteWebDriver(url, DesiredCapabilities.firefox());
     }
 
-    @ConditionalOnProperty(name = "browser",havingValue = "edge")
+    @ConditionalOnProperty(name = "browser", havingValue = "edge")
     @ThreadBrowsing
-    public WebDriver edgeDriver(){
+    public WebDriver edgeDriver() {
         return new RemoteWebDriver(url, DesiredCapabilities.edge());
     }
 
-    @ConditionalOnProperty(name = "browser",havingValue = "opera")
+    @ConditionalOnProperty(name = "browser", havingValue = "opera")
     @ThreadBrowsing
-    public WebDriver operaDriver(){
+    public WebDriver operaDriver() {
         return new RemoteWebDriver(url, DesiredCapabilities.opera());
     }
 
     @ThreadBrowsing
     @ConditionalOnMissingBean
-    public WebDriver chromeDriver(){
+    public WebDriver chromeDriver() {
         return new RemoteWebDriver(url, DesiredCapabilities.chrome());
     }
 

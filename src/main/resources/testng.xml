@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" verbose="10" configfailurepolicy="skip" parallel="instances">
+
+    <test name="Regression">
+        <classes>
+            <class name="com.automationpractice.Seleniumautomation.runner.TestRunner"></class>
+        </classes>
+    </test>
+</suite>
+        

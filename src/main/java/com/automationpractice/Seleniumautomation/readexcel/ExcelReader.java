@@ -13,128 +13,128 @@ import java.util.List;
 
 public class ExcelReader {
 
-	private String fileName;
-	private String sheetName;
-	private int sheetIndex;
-	private XSSFWorkbook book;
+    private String fileName;
+    private String sheetName;
+    private int sheetIndex;
+    private XSSFWorkbook book;
 
-	private ExcelReader(ExcelReaderBuilder excelReaderBuilder) {
-		this.fileName = excelReaderBuilder.fileName;
-		this.sheetIndex = excelReaderBuilder.sheetIndex;
-		this.sheetName = excelReaderBuilder.sheetName;
-	}
+    private ExcelReader(ExcelReaderBuilder excelReaderBuilder) {
+        this.fileName = excelReaderBuilder.fileName;
+        this.sheetIndex = excelReaderBuilder.sheetIndex;
+        this.sheetName = excelReaderBuilder.sheetName;
+    }
 
-	public static class ExcelReaderBuilder {
+    private XSSFWorkbook getWorkBook(String filePath) throws InvalidFormatException, IOException {
+        return new XSSFWorkbook(new File(filePath));
+    }
 
-		private String fileName;
-		private String sheetName;
-		private int sheetIndex;
+    private XSSFSheet getWorkBookSheet(String fileName, String sheetName) throws InvalidFormatException, IOException {
+        this.book = getWorkBook(fileName);
+        return this.book.getSheet(sheetName);
+    }
 
-		public ExcelReaderBuilder setFileLocation(String location) {
-			this.fileName = location;
-			return this;
-		}
+    private XSSFSheet getWorkBookSheet(String fileName, int sheetIndex) throws InvalidFormatException, IOException {
+        this.book = getWorkBook(fileName);
+        return this.book.getSheetAt(sheetIndex);
+    }
 
-		public ExcelReaderBuilder setSheet(String sheetName) {
-			this.sheetName = sheetName;
-			return this;
-		}
+    public List<List<String>> getSheetData() throws IOException {
+        XSSFSheet sheet;
+        List<List<String>> outerList = new LinkedList<>();
 
-		public ExcelReaderBuilder setSheet(int index) {
-			this.sheetIndex = index;
-			return this;
-		}
+        try {
+            sheet = getWorkBookSheet(fileName, sheetName);
+            outerList = getSheetData(sheet);
+        } catch (InvalidFormatException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            this.book.close();
+        }
+        return outerList;
+    }
 
-		public ExcelReader build() {
-			return new ExcelReader(this);
-		}
+    public List<List<String>> getSheetDataAt() throws InvalidFormatException, IOException {
 
-	}
+        XSSFSheet sheet;
+        List<List<String>> outerList = new LinkedList<>();
 
-	private XSSFWorkbook getWorkBook(String filePath) throws InvalidFormatException, IOException {
-		return new XSSFWorkbook(new File(filePath));
-	}
+        try {
+            sheet = getWorkBookSheet(fileName, sheetIndex);
+            outerList = getSheetData(sheet);
+        } catch (InvalidFormatException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            this.book.close();
+        }
+        return outerList;
+    }
 
-	private XSSFSheet getWorkBookSheet(String fileName, String sheetName) throws InvalidFormatException, IOException {
-		this.book = getWorkBook(fileName);
-		return this.book.getSheet(sheetName);
-	}
+    private List<List<String>> getSheetData(XSSFSheet sheet) {
+        List<List<String>> outerList = new LinkedList<>();
+        prepareOutterList(sheet, outerList);
+        return Collections.unmodifiableList(outerList);
+    }
 
-	private XSSFSheet getWorkBookSheet(String fileName, int sheetIndex) throws InvalidFormatException, IOException {
-		this.book = getWorkBook(fileName);
-		return this.book.getSheetAt(sheetIndex);
-	}
+    private void prepareOutterList(XSSFSheet sheet, List<List<String>> outerList) {
+        for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
+            List<String> innerList = new LinkedList<>();
+            XSSFRow xssfRow = sheet.getRow(i);
 
-	public List<List<String>> getSheetData() throws IOException{
-		XSSFSheet sheet;
-		List<List<String>> outerList = new LinkedList<>();
-		
-		try {
-			sheet = getWorkBookSheet(fileName, sheetName);
-			outerList = getSheetData(sheet);
-		} catch (InvalidFormatException e) {
-			throw new RuntimeException(e.getMessage());
-		}finally {
-			this.book.close();
-		}
-		return outerList;
-	}
-	
-	public List<List<String>> getSheetDataAt() throws InvalidFormatException, IOException {
-		
-		XSSFSheet sheet;
-		List<List<String>> outerList = new LinkedList<>();
-		
-		try {
-			sheet = getWorkBookSheet(fileName, sheetIndex);
-			outerList = getSheetData(sheet);
-		} catch (InvalidFormatException e) {
-			throw new RuntimeException(e.getMessage());
-		}finally {
-			this.book.close();
-		}
-		return outerList;
-	}
+            for (int j = xssfRow.getFirstCellNum(); j < xssfRow.getLastCellNum(); j++) {
+                prepareInnerList(innerList, xssfRow, j);
+            }
+            outerList.add(Collections.unmodifiableList(innerList));
+        }
+    }
 
-	private List<List<String>> getSheetData(XSSFSheet sheet) {
-		List<List<String>> outerList = new LinkedList<>();
-		prepareOutterList(sheet, outerList);
-		return Collections.unmodifiableList(outerList);
-	}
+    private void prepareInnerList(List<String> innerList, XSSFRow xssfRow, int j) {
+        switch (xssfRow.getCell(j).getCellTypeEnum()) {
 
-	private void prepareOutterList(XSSFSheet sheet, List<List<String>> outerList) {
-		for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
-			List<String> innerList = new LinkedList<>();
-			XSSFRow xssfRow = sheet.getRow(i);
+            case BLANK:
+                innerList.add("");
+                break;
 
-			for (int j = xssfRow.getFirstCellNum(); j < xssfRow.getLastCellNum(); j++) {
-				prepareInnerList(innerList, xssfRow, j);
-			}
-			outerList.add(Collections.unmodifiableList(innerList));
-		}
-	}
+            case STRING:
+                innerList.add(xssfRow.getCell(j).getStringCellValue());
+                break;
 
-	private void prepareInnerList(List<String> innerList, XSSFRow xssfRow, int j) {
-		switch (xssfRow.getCell(j).getCellTypeEnum()) {
+            case NUMERIC:
+                innerList.add(xssfRow.getCell(j).getNumericCellValue() + "");
+                break;
 
-		case BLANK:
-			innerList.add("");
-			break;
+            case BOOLEAN:
+                innerList.add(xssfRow.getCell(j).getBooleanCellValue() + "");
+                break;
 
-		case STRING:
-			innerList.add(xssfRow.getCell(j).getStringCellValue());
-			break;
+            default:
+                throw new IllegalArgumentException("Cannot read the column : " + j);
+        }
+    }
 
-		case NUMERIC:
-			innerList.add(xssfRow.getCell(j).getNumericCellValue() + "");
-			break;
+    public static class ExcelReaderBuilder {
 
-		case BOOLEAN:
-			innerList.add(xssfRow.getCell(j).getBooleanCellValue() + "");
-			break;
+        private String fileName;
+        private String sheetName;
+        private int sheetIndex;
 
-		default:
-			throw new IllegalArgumentException("Cannot read the column : " + j);
-		}
-	}
+        public ExcelReaderBuilder setFileLocation(String location) {
+            this.fileName = location;
+            return this;
+        }
+
+        public ExcelReaderBuilder setSheet(String sheetName) {
+            this.sheetName = sheetName;
+            return this;
+        }
+
+        public ExcelReaderBuilder setSheet(int index) {
+            this.sheetIndex = index;
+            return this;
+        }
+
+        public ExcelReader build() {
+            return new ExcelReader(this);
+        }
+
+    }
 }

@@ -19,37 +19,33 @@ public class WebDriverBean extends ProfileCommonShare {
     @Value("${default.timeout:30}")
     private int timeout;
 
-    @ConditionalOnProperty(name = "browser",havingValue = "firefox")
+    @ConditionalOnProperty(name = "browser", havingValue = "firefox")
     @ThreadBrowsing
-    public WebDriver fireDriver(){
+    public WebDriver fireDriver() {
         WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver();
     }
 
-    @ConditionalOnProperty(name = "browser",havingValue = "edge")
+    @ConditionalOnProperty(name = "browser", havingValue = "edge")
     @ThreadBrowsing
-    public WebDriver edgeDriver(){
+    public WebDriver edgeDriver() {
         WebDriverManager.edgedriver().setup();
-        return  new EdgeDriver();
+        return new EdgeDriver();
     }
 
-    @ConditionalOnProperty(name = "browser",havingValue = "opera")
+    @ConditionalOnProperty(name = "browser", havingValue = "opera")
     @ThreadBrowsing
-    public WebDriver operaDriver(){
+    public WebDriver operaDriver() {
         WebDriverManager.operadriver().setup();
         return new OperaDriver();
     }
 
     @ThreadBrowsing
     @ConditionalOnMissingBean
-    public WebDriver chromeDriver(){
+    public WebDriver chromeDriver() {
         WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
     }
-
-
-
-
 
 
 }

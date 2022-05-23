@@ -40,10 +40,10 @@ public class CucumberHooks {
     }
 
     @After
-    public void afterscenari()  {
+    public void afterscenari() {
 
         driver.manage().deleteAllCookies();
-      //  driver.quit();
+        driver.quit();
 
     }
 }

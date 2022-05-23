@@ -90,7 +90,7 @@ public class TransactionDefinition {
         /**
          * The image on home page is not the same as the one on cart page so we exclude it when comparing
          */
-        assertTrue("data on cart is not the same one that was added", actual.stream().map(ProductData::getName)
+        assertTrue("User was not successfully login", actual.stream().map(ProductData::getName)
                 .collect(Collectors.toSet())
                 .equals(expected.stream().map(ProductData::getName).collect(Collectors.toSet())) &&
                 actual.stream().map(ProductData::getPriceValue).collect(Collectors.toSet())

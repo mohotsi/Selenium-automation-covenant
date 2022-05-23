@@ -26,7 +26,6 @@ public class SignInDefinition {
     @Autowired
     @Lazy
     HomePage homePage;
-    
 
 
     @When("User login with the email {string} and password {string}")
@@ -37,9 +36,9 @@ public class SignInDefinition {
 
     @Then("Verify the following text links are displayed")
     public void verifyTheFollowingTextLinksAreDisplayed(DataTable dataTable) {
-       val expected= dataTable.asMaps().stream().map(col->col.get("links")).collect(Collectors.toList());
-       val actual=homePage.getLinks().stream().map(WebElement::getText).collect(Collectors.toList());
-        assertTrue("User was not successfully login",actual.containsAll(expected));
+        val expected = dataTable.asMaps().stream().map(col -> col.get("links")).collect(Collectors.toList());
+        val actual = homePage.getLinks().stream().map(WebElement::getText).collect(Collectors.toList());
+        assertTrue("User was not successfully login", actual.containsAll(expected));
 
     }
 

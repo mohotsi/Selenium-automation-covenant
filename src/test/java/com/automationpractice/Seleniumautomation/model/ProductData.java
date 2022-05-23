@@ -1,9 +1,9 @@
 package com.automationpractice.Seleniumautomation.model;
 
 public class ProductData {
-private String name;
-private byte[] image;
-private Double priceValue;
+    private String name;
+    private byte[] image;
+    private Double priceValue;
 
     public ProductData(String name, byte[] image, Double priceValue) {
         this.name = name;

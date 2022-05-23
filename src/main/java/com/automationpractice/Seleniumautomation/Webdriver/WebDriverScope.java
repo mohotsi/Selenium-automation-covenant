@@ -9,11 +9,11 @@ import java.util.Objects;
 public class WebDriverScope extends SimpleThreadScope {
     @Override
     public Object get(String name, ObjectFactory<?> objectFactory) {
-        Object object= super.get(name, objectFactory);
+        Object object = super.get(name, objectFactory);
 
-        if(Objects.isNull( ((RemoteWebDriver)object).getSessionId())){
+        if (Objects.isNull(((RemoteWebDriver) object).getSessionId())) {
             super.remove(name);
-            object=super.get(name, objectFactory);
+            object = super.get(name, objectFactory);
         }
         return object;
 

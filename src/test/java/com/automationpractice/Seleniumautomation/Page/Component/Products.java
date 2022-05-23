@@ -13,9 +13,10 @@ public class Products {
     public Products(List<WebElement> products) {
         this.products = products;
     }
-    public List<WebElement> getNames(){
 
-        return products.stream().map(product->product.findElement(By.className("product-name")))
+    public List<WebElement> getNames() {
+
+        return products.stream().map(product -> product.findElement(By.className("product-name")))
                 .collect(Collectors.toList());
     }
 

@@ -5,22 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Page
-public class LoginPage extends CommonPage{
+public class LoginPage extends CommonPage {
 
     @FindBy(id = "email_create")
     WebElement CreateEmailAddress;
     @FindBy(id = "SubmitCreate")
-     WebElement createAnAccountButton;
-    @FindBy(id="email")
+    WebElement createAnAccountButton;
+    @FindBy(id = "email")
     WebElement loginEmailAddress;
-    @FindBy(id="passwd")
+    @FindBy(id = "passwd")
     WebElement password;
-    @FindBy(id="SubmitLogin")
+    @FindBy(id = "SubmitLogin")
     WebElement signInButton;
 
-    public void signInIntoWebSite(String email,String password) throws InterruptedException {
-        Thread.sleep(5000);
-       scrollTo(loginEmailAddress).sendKeys(email);
+    public void signInIntoWebSite(String email, String password) {
+        scrollTo(loginEmailAddress).sendKeys(email);
         this.password.sendKeys(password);
         clickRetry(signInButton);
 

@@ -11,7 +11,7 @@ public class ProfileCommonShare {
     private int timeout;
 
     @Bean
-    public WebDriverWait webDriverWait(WebDriver driver){
-        return  new WebDriverWait(driver,timeout);
+    public WebDriverWait webDriverWait(WebDriver driver) {
+        return new WebDriverWait(driver, timeout);
     }
 }
