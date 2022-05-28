@@ -1,7 +1,7 @@
 package com.automationpractice.Seleniumautomation.Page;
 
 
-import WebElement.config.WebElementExt;
+
 import com.automationpractice.Seleniumautomation.annotation.Page;
 import com.automationpractice.Seleniumautomation.util.ScrollTo;
 import com.automationpractice.Seleniumautomation.util.ScrollToWithRetry;

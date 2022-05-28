@@ -8,12 +8,8 @@ Feature: Search Criteria
     Scenario Outline: TC3 – Repeat TC1 again this time using a data driven approach using an external
     datafile such as an excel spreadsheet or text file.
     When : User searches for "<Search>"
-      Then    : Verify the first result matches "<Search>"
-      Examples:
-        |Search|
-        |Blouse|
-        |Faded Short Sleeve T-shirts|
-        |Printed Summer Dress       |
+      Then    : Verify the first result matches '<Search>'
+      Examples:@sources:src/main/resources/data.csv
 
 
 
