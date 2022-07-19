@@ -3,7 +3,7 @@
 
     <test name="Regression">
         <classes>
-            <class name="com.automationpractice.Seleniumautomation.runner.TestRunner"></class>
+            <class name="ae.proctected.covenant.Seleniumautomation.runner.TestRunner"></class>
         </classes>
     </test>
 </suite>
