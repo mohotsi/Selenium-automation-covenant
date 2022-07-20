@@ -23,6 +23,7 @@ public class CartPage extends CommonPage {
 
     public List<List<WebTableCell>> getShoppingCartSummary() {
         val table = waitUntilItIsDisplayed(shoppingCartSummary);
+
         val tableHeaders = table.findElements(By.tagName("th"));
         val tableRow = table.findElement(By.tagName("tbody")).findElements(By.tagName("tr"));
         return tableRow.stream().map(tr -> tr.findElements(By.tagName("td")))

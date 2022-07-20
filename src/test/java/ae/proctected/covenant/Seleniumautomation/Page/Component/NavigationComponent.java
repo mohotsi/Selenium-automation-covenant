@@ -30,6 +30,8 @@ waitForloadingOfWebElement(verticalNav.stream().filter(webElement -> webElement.
 
        clickRetry( waitForloadingOfWebElement(verticalNav.stream().filter(webElement -> webElement.getText().equalsIgnoreCase(linkText)).
                findFirst().get()));
+        clickRetry( waitForloadingOfWebElement(verticalNav.stream().filter(webElement -> webElement.getText().equalsIgnoreCase(linkText)).
+                findFirst().get()));
     }
 
 }

@@ -8,4 +8,13 @@ Feature: Grant
    And select Launcher "PowerShell"
     And Download launcher
     And  Execute the launcher file on the target machine
-    And Navigate to "Grants"
+     And Navigate to Home Page
+    And Navigate to "Grunts"
+    And click top Grunt entry
+   And select grunt tab interact-tab
+   And Send command(s)
+   |commands|
+   | WhoAmI       |
+  Then command response are
+   |responses|
+   | DESKTOP-9MTQM7N\thapelo        |
