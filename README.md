@@ -12,7 +12,7 @@
 - [Description](#description)
 - [Virtual machine installation and setup](#How_to_get_our_virtual_box_up_and_running)
 - [Installing docker images](#Images_installation)
-- [Running automation pack] (#running_the_automation_pack)
+- [Running automation pack](#running_the_automation_pack)
 - [License](#license)
 - [Author Info](#author-info)
 
