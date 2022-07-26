@@ -12,7 +12,7 @@
 - [Description](#description)
 - [Virtual machine installation and setup](#How_to_get_our_virtual_box_up_and_running)
 - [Installing docker images](#Images_installation)
-- [Running automation pack] (#How to run the automation pack)
+- [Running automation pack] (#running_the_automation_pack)
 - [License](#license)
 - [Author Info](#author-info)
 
@@ -69,7 +69,7 @@ automation assignment to simulate the behaviour of a user which interacts with t
 ### Jenkins (ci pipeline)
     sudo docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts-jdk11
 
-#### How to run the automation pack
+#### running_the_automation_pack
 - selenium grid /zalenium docker image must be running (!)
 - virtual machine must be on (!)
 
