@@ -1,6 +1,6 @@
 # covenant_automation_solution
 
-![Love looks aaround to see who is in need](https://media-exp1.licdn.com/dms/image/C4D03AQFjk_XH1ilNLQ/profile-displayphoto-shrink_800_800/0/1586092616919?e=1664409600&v=beta&t=LNzq33uOJ8rvoLb2iZx0HwyPF0ZrzBm-xJAP20PTklU)
+
 
 > Test automation solution
 
@@ -96,6 +96,7 @@ For helping me get vacancies
 
 - linkedin - [Thapelo Daniel Mohotsi](https://www.linkedin.com/in/thapelo-daniel-mohotsi-1b752a42/)
 - github - [Thapelo Daniel Mohotsi](https://github.com/mohotsi)
+- ![Love looks aaround to see who is in need](https://media-exp1.licdn.com/dms/image/C4D03AQFjk_XH1ilNLQ/profile-displayphoto-shrink_800_800/0/1586092616919?e=1664409600&v=beta&t=LNzq33uOJ8rvoLb2iZx0HwyPF0ZrzBm-xJAP20PTklU)
 
 [Back To The Top](#covenant_automation_solution)
 
