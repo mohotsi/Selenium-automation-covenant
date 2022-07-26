@@ -1,4 +1,4 @@
-# covenant automation solution
+# covenant_automation_solution
 
 ![Project Image](project-image-url)
 
@@ -10,8 +10,8 @@
 
 
 - [Description](#description)
-- [Virtual machine installation and setup](#How to get your virtual box up and running)
-- [Installing docker images](#Images installation)
+- [Virtual machine installation and setup](#How_to_get_our_virtual_box_up_and_running)
+- [Installing docker images](#Images_installation)
 - [Running automation pack] (#How to run the automation pack)
 - [License](#license)
 - [Author Info](#author-info)
@@ -32,7 +32,7 @@ automation assignment to simulate the behaviour of a user which interacts with t
 
 [Back To The Top](#covenant automation solution)
 
-## How to get your virtual box up and running
+## How_to_get_our_virtual_box_up_and_running
 ### install on Unix(linux)
     $>sudo apt-get install virtualbox
 - create new virtual machine with Windows 10
@@ -49,7 +49,7 @@ automation assignment to simulate the behaviour of a user which interacts with t
 
 ## How To Use
 
-## Images Installation
+## Images_installation
 ### Pull docker-selenium
 
      docker pull elgalu/selenium
@@ -88,7 +88,7 @@ automation assignment to simulate the behaviour of a user which interacts with t
 Copyright (c) [2022] [Thapelo]
 For helping me get vacancies
 
-[Back To The Top](#read-me-template)
+[Back To The Top](covenant_automation_solution)
 
 ---
 
@@ -97,7 +97,7 @@ For helping me get vacancies
 - linkedin - [Thapelo Daniel Mohotsi](https://www.linkedin.com/in/thapelo-daniel-mohotsi-1b752a42/)
 - github - [Thapelo Daniel Mohotsi](https://github.com/mohotsi)
 
-[Back To The Top](#read-me-template)
+[Back To The Top](#covenant_automation_solution)
 
 
 
